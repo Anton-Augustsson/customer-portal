@@ -28,6 +28,8 @@ docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
 - Swagger Viewer: Allows you to view the OpenAPI specification in a more intuitive way. It also provides linting.
 
 
+### Spring boot
+- [Spring Boot Tutorial | Full Course [2023] [NEW]](https://www.youtube.com/watch?v=9SGDpanrc8U)
 ### OpenAPI
 - [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
 - [Documentation for the spring Generator](https://openapi-generator.tech/docs/generators/spring/)

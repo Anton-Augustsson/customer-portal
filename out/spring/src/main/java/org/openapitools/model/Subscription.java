@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * Subscription
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-02-18T16:32:55.693455888Z[Etc/UTC]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-02-18T17:28:49.134660478Z[Etc/UTC]")
 public class Subscription {
 
   private Long id;

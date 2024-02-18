@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
   description: An example customer portal OpenAPI specification
   title: Customer Portal API
