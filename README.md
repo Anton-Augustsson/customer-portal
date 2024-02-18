@@ -15,6 +15,13 @@ the customer portal.
 - Subscription
 - Camera
 
+## Generate server stub
+```bash
+docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
+    -i /local/customer-portal-open-api.yaml \
+    -g spring \
+    -o /local/out/spring
+```
 
 ## Resources
 ### VS Code
@@ -23,6 +30,7 @@ the customer portal.
 
 ### OpenAPI
 - [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
+- [Documentation for the spring Generator](https://openapi-generator.tech/docs/generators/spring/)
 - [Open API Server Implementation Using OpenAPI Generator](https://www.baeldung.com/java-openapi-generator-server)
 - [Spring Documentation Overview](https://docs.spring.io/spring-boot/docs/current/reference/html/documentation.html#documentation)
 - [OpenAPI data types](https://swagger.io/docs/specification/data-models/data-types/)

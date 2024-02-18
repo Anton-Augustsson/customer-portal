@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.3
 info:
   version: 1.0.0
   title: Customer Portal API
@@ -11,22 +11,24 @@ tags:
   - name: camera
     description: Managing camera
 paths:
-  /subscriber:
+  /subscribers:
     get:
       tags:
         - subscriber
       description: Returns a list of all subscribers              
+      operationId: getSubscribers
       responses:
         '200':
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#components/schemas/SubscribersList'
+                $ref: '#/components/schemas/SubscribersList'
     post:
       tags:
         - subscriber
       description: Create a single subscribers              
+      operationId: addSubscriber
       requestBody:
         description: Update an existent pet in the store
         content:
@@ -42,6 +44,7 @@ paths:
       tags:
         - subscriber
       description: Get a single subscribers
+      operationId: getSubscriberById
       parameters:
         - name: subscriberId
           in: path
@@ -60,6 +63,7 @@ paths:
       tags:
         - subscriber
       description: Update a single subscribers
+      operationId: updateSubscriber
       parameters:
         - name: subscriberId
           in: path
@@ -81,6 +85,14 @@ paths:
       tags:
         - subscriber
       description: Delete a single subscribers              
+      operationId: deleteSubscriber
+      parameters:
+        - name: subscriberId
+          in: path
+          description: ID of subscriber to delete
+          required: true
+          schema:
+              $ref: '#/components/schemas/SubscriberID'
       responses:
         '200':
           description: Successful response
@@ -89,6 +101,7 @@ paths:
       tags:
         - subscriber
       description: Returns a list of all of the subscription of a subscriber
+      operationId: getSubscribersSubscriptions
       parameters:
         - name: subscriberId
           in: path
@@ -102,12 +115,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#components/schemas/SubscriptionsList'
+                $ref: '#/components/schemas/SubscriptionsList'
   /subscription:
     get:
       tags:
         - subscription
       description: Get a list of all subscriptions
+      operationId: getSubscription
       responses:
         '200':
           description: Successful response
@@ -119,6 +133,7 @@ paths:
       tags:
         - subscription
       description: Create a new subscription
+      operationId: addSubscription
       requestBody:
         description: Update subscriber information
         content:
@@ -134,13 +149,8 @@ paths:
       tags:
         - subscription
       description: Returns a subscription of a subscriber
+      operationId: getSubscriptionById
       parameters:
-        - name: subscriberId
-          in: path
-          description: ID of subscriber that the subscription belongs to
-          required: true
-          schema:
-              $ref: '#/components/schemas/SubscriberID'
         - name: subscriptionId
           in: path
           description: ID of subscription to return
@@ -153,18 +163,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#components/schemas/Subscription'
+                $ref: '#/components/schemas/Subscription'
     put:
       tags:
         - subscription
       description: Update a subscription
+      operationId: updateSubscription
       parameters:
-        - name: subscriberId
-          in: path
-          description: ID of subscriber that the subscription belongs to
-          required: true
-          schema:
-              $ref: '#/components/schemas/SubscriberID'
         - name: subscriptionId
           in: path
           description: ID of subscription to update
@@ -185,13 +190,8 @@ paths:
       tags:
         - subscription
       description: Update a subscription
+      operationId: deleteSubscription
       parameters:
-        - name: subscriberId
-          in: path
-          description: ID of subscriber that the subscription belongs to
-          required: true
-          schema:
-              $ref: '#/components/schemas/SubscriberID'
         - name: subscriptionId
           in: path
           description: ID of subscription to delete
@@ -206,13 +206,8 @@ paths:
       tags:
         - subscription
       description: Returns a list of all cameras that is within subscription
+      operationId: getSubscribersCamera
       parameters:
-        - name: subscriberId
-          in: path
-          description: ID of subscriber that the subscription belongs to
-          required: true
-          schema:
-              $ref: '#/components/schemas/SubscriberID'
         - name: subscriptionId
           in: path
           description: ID of subscription to get the relevant cameras from
@@ -225,23 +220,25 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#components/schemas/CamerasList'
+                $ref: '#/components/schemas/CamerasList'
   /camera:
     get:
       tags:
         - camera
       description: Returns a list of all cameras
+      operationId: getCamera
       responses:
         '200':
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: '#components/schemas/CamerasList'
+                $ref: '#/components/schemas/CamerasList'
     post:
       tags:
         - camera
       description: Create a new available camera
+      operationId: addCamera
       responses:
         '200':
           description: Successful response
@@ -250,8 +247,9 @@ paths:
       tags:
         - camera
       description: Update 
+      operationId: updateCamera
       parameters:
-        - name: cameraID
+        - name: cameraId
           in: path
           description: ID of camera to update
           required: true
@@ -265,8 +263,9 @@ paths:
       tags:
         - camera
       description: Update 
+      operationId: updateCameraLocation
       parameters:
-        - name: subscriberId
+        - name: cameraId
           in: path
           description: ID of camera to update
           required: true
@@ -284,6 +283,18 @@ paths:
           description: Successful response
 components:
   schemas:
+    SubscriberID:
+      type: integer
+      format: int64
+      example: 311109
+    SubscriptionID:
+      type: integer
+      format: int64
+      example: 311109
+    CameraID:
+      type: integer
+      format: int64
+      example: 311109
     Subscriber:
       type: object
       properties:
@@ -291,7 +302,6 @@ components:
           $ref: '#/components/schemas/SubscriberID'
         username:
           type: string
-          format: fehguy
           example: bob123
         name:
           type: string
@@ -327,7 +337,6 @@ components:
           example: 11
         name:
           type: string
-          format: fehguy
           example: camera1
         location:
           $ref: '#/components/schemas/Coordinates'
@@ -342,13 +351,13 @@ components:
           format: double
           minimum: -90.0
           maximum: 90.0
-          example: 41.40338
+          example: 41.4
         longitude:
           type: number
           format: double
           minimum: -180.0
           maximum: 180.0
-          example: 2.17403
+          example: 2.1
       required:
         - latitude
         - longitude
@@ -363,16 +372,4 @@ components:
     CamerasList:
       type: array
       items:
-        $ref: '#/components/schemas/CameraID'
-    SubscriberID:
-      type: integer
-      format: int64
-      example: 311109
-    SubscriptionID:
-      type: integer
-      format: int64
-      example: 311109
-    CameraID:
-      type: integer
-      format: int64
-      example: 311109
+        $ref: '#/components/schemas/Camera'
