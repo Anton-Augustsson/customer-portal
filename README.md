@@ -1,5 +1,5 @@
 # Customer portal
-An example application of a scalable customer portal developed in Java Spring Boot for the backend and Angular for the frontend.
+An example application of a scalable customer portal developed in Golang using gin for the backend and Angular for the frontend.
 
 
 ## The example
@@ -15,21 +15,29 @@ the customer portal.
 - Subscription
 - Camera
 
+
 ## Generate server stub
 ```bash
 docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
-    -i /local/customer-portal-open-api.yaml \
-    -g spring \
-    -o /local/out/spring
+    -i /local/open-api-customer-portal.yaml \
+    -g go-gin-server \
+    -o /local/out/gin
 ```
+read more [go-gin-server.md](https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/go-gin-server.md)
+
+## Build
+The build and start up is handled with docker compose, so in the root project directory type:
+```bash
+docker compose up
+```
+Then you can test by typing `http://localhost:8080/camera` in your web browser.
+
 
 ## Resources
 ### VS Code
 - Swagger Viewer: Allows you to view the OpenAPI specification in a more intuitive way. It also provides linting.
 
 
-### Spring boot
-- [Spring Boot Tutorial | Full Course [2023] [NEW]](https://www.youtube.com/watch?v=9SGDpanrc8U)
 ### OpenAPI
 - [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
 - [Documentation for the spring Generator](https://openapi-generator.tech/docs/generators/spring/)
@@ -49,3 +57,10 @@ docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
 ### Further reading
 #### gRPC
 AN alternatively to a REST API is gRPC which is said to provide better performance then REST API. It is much more modern then REST API and was initial created by google in 2015 but is now managed by Cloud Native Computing Foundation.
+
+### Spring boot
+An alternative to Golang for microservices is JAVA using the spring boot framework.
+However, it is slower and have become unessesaraly more complex over the year,
+and arguably Golang is more suited for microservices.
+
+- [Spring Boot Tutorial | Full Course [2023] [NEW]](https://www.youtube.com/watch?v=9SGDpanrc8U)

@@ -1,0 +1,423 @@
+openapi: 3.0.0
+info:
+  description: An example customer portal OpenAPI specification
+  title: Customer Portal API
+  version: 1.0.0
+servers:
+- url: /
+tags:
+- description: Managing subscribers
+  name: subscriber
+- description: Managing subscription
+  name: subscription
+- description: Managing camera
+  name: camera
+paths:
+  /subscribers:
+    get:
+      description: Returns a list of all subscribers
+      operationId: getSubscribers
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscribersList'
+          description: Successful response
+      tags:
+      - subscriber
+    post:
+      description: Create a single subscribers
+      operationId: addSubscriber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscriber'
+        description: Update an existent pet in the store
+        required: true
+      responses:
+        "200":
+          description: Successful response
+      tags:
+      - subscriber
+  /subscriber/{subscriberId}:
+    delete:
+      description: Delete a single subscribers
+      operationId: deleteSubscriber
+      parameters:
+      - description: ID of subscriber to delete
+        explode: false
+        in: path
+        name: subscriberId
+        required: true
+        schema:
+          $ref: '#/components/schemas/SubscriberID'
+        style: simple
+      responses:
+        "200":
+          description: Successful response
+      tags:
+      - subscriber
+    get:
+      description: Get a single subscribers
+      operationId: getSubscriberById
+      parameters:
+      - description: ID of subscriber to get data from
+        explode: false
+        in: path
+        name: subscriberId
+        required: true
+        schema:
+          $ref: '#/components/schemas/SubscriberID'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscriber'
+          description: Successful response
+      tags:
+      - subscriber
+    put:
+      description: Update a single subscribers
+      operationId: updateSubscriber
+      parameters:
+      - description: ID of subscriber to update
+        explode: false
+        in: path
+        name: subscriberId
+        required: true
+        schema:
+          $ref: '#/components/schemas/SubscriberID'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscriber'
+        description: Update subscriber information
+        required: true
+      responses:
+        "200":
+          description: Successful response
+      tags:
+      - subscriber
+  /subscriber/{subscriberId}/subscription:
+    get:
+      description: Returns a list of all of the subscription of a subscriber
+      operationId: getSubscribersSubscriptions
+      parameters:
+      - description: ID of subscriber to get the subscription from
+        explode: false
+        in: path
+        name: subscriberId
+        required: true
+        schema:
+          $ref: '#/components/schemas/SubscriberID'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionsList'
+          description: Successful response
+      tags:
+      - subscriber
+  /subscription:
+    get:
+      description: Get a list of all subscriptions
+      operationId: getSubscription
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionsList'
+          description: Successful response
+      tags:
+      - subscription
+    post:
+      description: Create a new subscription
+      operationId: addSubscription
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+        description: Update subscriber information
+        required: true
+      responses:
+        "200":
+          description: Successful response
+      tags:
+      - subscription
+  /subscription/{subscriptionId}:
+    delete:
+      description: Update a subscription
+      operationId: deleteSubscription
+      parameters:
+      - description: ID of subscription to delete
+        explode: false
+        in: path
+        name: subscriptionId
+        required: true
+        schema:
+          $ref: '#/components/schemas/SubscriptionID'
+        style: simple
+      responses:
+        "200":
+          description: Successful response
+      tags:
+      - subscription
+    get:
+      description: Returns a subscription of a subscriber
+      operationId: getSubscriptionById
+      parameters:
+      - description: ID of subscription to return
+        explode: false
+        in: path
+        name: subscriptionId
+        required: true
+        schema:
+          $ref: '#/components/schemas/SubscriptionID'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+          description: Successful response
+      tags:
+      - subscription
+    put:
+      description: Update a subscription
+      operationId: updateSubscription
+      parameters:
+      - description: ID of subscription to update
+        explode: false
+        in: path
+        name: subscriptionId
+        required: true
+        schema:
+          $ref: '#/components/schemas/SubscriptionID'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+        description: Update an existent pet in the store
+        required: true
+      responses:
+        "200":
+          description: Successful response
+      tags:
+      - subscription
+  /subscription/{subscriptionId}/camera:
+    get:
+      description: Returns a list of all cameras that is within subscription
+      operationId: getSubscribersCamera
+      parameters:
+      - description: ID of subscription to get the relevant cameras from
+        explode: false
+        in: path
+        name: subscriptionId
+        required: true
+        schema:
+          $ref: '#/components/schemas/SubscriptionID'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CamerasList'
+          description: Successful response
+      tags:
+      - subscription
+  /camera:
+    get:
+      description: Returns a list of all cameras
+      operationId: getCamera
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CamerasList'
+          description: Successful response
+      tags:
+      - camera
+    post:
+      description: Create a new available camera
+      operationId: addCamera
+      responses:
+        "200":
+          description: Successful response
+      tags:
+      - camera
+  /camera/{cameraId}:
+    put:
+      description: Update
+      operationId: updateCamera
+      parameters:
+      - description: ID of camera to update
+        explode: false
+        in: path
+        name: cameraId
+        required: true
+        schema:
+          $ref: '#/components/schemas/CameraID'
+        style: simple
+      responses:
+        "200":
+          description: Successful response
+      tags:
+      - camera
+  /camera/{cameraId}/location:
+    put:
+      description: Update
+      operationId: updateCameraLocation
+      parameters:
+      - description: ID of camera to update
+        explode: false
+        in: path
+        name: cameraId
+        required: true
+        schema:
+          $ref: '#/components/schemas/CameraID'
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Coordinates'
+        description: The new location of the camera
+        required: true
+      responses:
+        "200":
+          description: Successful response
+      tags:
+      - camera
+components:
+  schemas:
+    SubscriberID:
+      example: 311109
+      format: int64
+      type: integer
+    SubscriptionID:
+      example: 311109
+      format: int64
+      type: integer
+    CameraID:
+      example: 311109
+      format: int64
+      type: integer
+    Subscriber:
+      example:
+        name: bob smith
+        id: 311109
+        username: bob123
+      properties:
+        id:
+          example: 311109
+          format: int64
+          type: integer
+        username:
+          example: bob123
+          type: string
+        name:
+          example: bob smith
+          format: fehguy
+          type: string
+      required:
+      - id
+      - username
+      type: object
+    Subscription:
+      example:
+        subscriberId: 311109
+        id: 10
+        camera:
+          name: camera1
+          location:
+            latitude: 41.4
+            longitude: 2.1
+          id: 11
+        status: active
+      properties:
+        id:
+          example: 10
+          format: int64
+          type: integer
+        subscriberId:
+          example: 311109
+          format: int64
+          type: integer
+        status:
+          enum:
+          - active
+          - inactive
+          - suspended
+          - processing
+          type: string
+        camera:
+          $ref: '#/components/schemas/Camera'
+      type: object
+    Camera:
+      example:
+        name: camera1
+        location:
+          latitude: 41.4
+          longitude: 2.1
+        id: 11
+      properties:
+        id:
+          example: 11
+          format: int64
+          type: integer
+        name:
+          example: camera1
+          type: string
+        location:
+          $ref: '#/components/schemas/Coordinates'
+      required:
+      - id
+      type: object
+    Coordinates:
+      example:
+        latitude: 41.4
+        longitude: 2.1
+      properties:
+        latitude:
+          example: 41.4
+          format: double
+          maximum: 90.0
+          minimum: -90.0
+          type: number
+        longitude:
+          example: 2.1
+          format: double
+          maximum: 180.0
+          minimum: -180.0
+          type: number
+      required:
+      - latitude
+      - longitude
+      type: object
+    SubscribersList:
+      items:
+        $ref: '#/components/schemas/Subscriber'
+      type: array
+    SubscriptionsList:
+      items:
+        $ref: '#/components/schemas/Subscription'
+      type: array
+    CamerasList:
+      items:
+        $ref: '#/components/schemas/Camera'
+      type: array
