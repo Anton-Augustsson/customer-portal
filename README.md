@@ -54,6 +54,29 @@ Then you can test by typing `http://localhost:8080/camera` in your web browser.
 - [RESTful web API design](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design)
 
 
+### GO
+- [Effective Go](https://go.dev/doc/effective_go#interfaces_and_types)
+
+
+### NGINX
+- [NGINX: Full Example Configuration](https://www.nginx.com/resources/wiki/start/topics/examples/full/)
+- [NGINX Tutorial for Beginners](https://www.youtube.com/watch?v=9t9Mp0BGnyI)
+
+
+### Live streaming service
+- [How Does Live Streaming Platform Work? (YouTube live, Twitch, TikTok Live)](https://www.youtube.com/watch?v=7AMRfNKwuYo)
+- [Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)
+- [libav RTMP streaming](https://github.com/juniorxsound/libav-RTMP-Streaming)
+- [Go Video Transcoder - Govitra](https://github.com/bqqbarbhg/go-video-transcoder)
+- [transcoder](https://pkg.go.dev/cloud.google.com/go/video/transcoder/apiv1beta1)
+- [goDASH — GO Accelerated HAS Framework for Rapid Prototyping](https://ieeexplore.ieee.org/abstract/document/9123103)
+- [go-segment](https://github.com/cwinging/go-segment)
+- [go-ts-segmenter](https://github.com/jordicenzano/go-ts-segmenter)
+- [livego](https://github.com/qieangel2013/livego)
+- [goDash Application](https://github.com/uccmisl/godash)
+- [Angular video transformations](https://cloudinary.com/documentation/angular_video_transformations)
+
+
 ### Further reading
 #### gRPC
 AN alternatively to a REST API is gRPC which is said to provide better performance then REST API. It is much more modern then REST API and was initial created by google in 2015 but is now managed by Cloud Native Computing Foundation.
