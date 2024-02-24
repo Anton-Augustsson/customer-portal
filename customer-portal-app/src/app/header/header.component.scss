@@ -1,0 +1,13 @@
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+}
+
+.header-navigation-page, .header-right-section-element {
+  padding-left: 10px;
+  padding-right: 10px;
+}
