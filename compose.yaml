@@ -11,6 +11,7 @@ services:
     image: nginx
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./web:/web:ro
     ports:
       - "8000:80"
     environment:
