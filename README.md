@@ -61,7 +61,7 @@ Then you can test by typing `http://localhost:8080/camera` in your web browser.
 ### NGINX
 - [NGINX: Full Example Configuration](https://www.nginx.com/resources/wiki/start/topics/examples/full/)
 - [NGINX Tutorial for Beginners](https://www.youtube.com/watch?v=9t9Mp0BGnyI)
-
+- [CREATE AN ANGULAR APP AND DEPLOY USING IN NGINX AND DOCKER.](https://www.arunyadav.in/codehacks/blogs/post/19/create-an-angular-app-and-deploy-using-in-nginx-and-docker)
 
 ### Live streaming service
 - [How Does Live Streaming Platform Work? (YouTube live, Twitch, TikTok Live)](https://www.youtube.com/watch?v=7AMRfNKwuYo)

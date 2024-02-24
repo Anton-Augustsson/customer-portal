@@ -1,6 +1,5 @@
 services:
   customer-portal:
-    container_name: portal
     build:
       context: ./out/gin
     network_mode: host
@@ -8,10 +7,10 @@ services:
     expose:
       - "8080"
   web:
-    image: nginx
+    build:
+      context: ./customer-portal-app
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./web:/web:ro
     ports:
       - "8000:80"
     environment:
