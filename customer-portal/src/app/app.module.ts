@@ -8,6 +8,8 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { appConfig } from './app.config';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,9 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    appConfig.providers,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -63,6 +63,13 @@ Then you can test by typing `http://localhost:8080/camera` in your web browser.
 - [NGINX Tutorial for Beginners](https://www.youtube.com/watch?v=9t9Mp0BGnyI)
 - [CREATE AN ANGULAR APP AND DEPLOY USING IN NGINX AND DOCKER.](https://www.arunyadav.in/codehacks/blogs/post/19/create-an-angular-app-and-deploy-using-in-nginx-and-docker)
 
+
+### Angular
+- [Angular Basics: How To Use HttpClient in Angular](https://www.telerik.com/blogs/angular-basics-how-to-use-httpclient) 
+- [ng-openapi-gen: An OpenAPI 3 code generator for Angular](https://www.npmjs.com/package/ng-openapi-gen)
+- [HTTP: Setup for server communication](https://angular.io/guide/http-setup-server-communication)
+
+
 ### Live streaming service
 - [How Does Live Streaming Platform Work? (YouTube live, Twitch, TikTok Live)](https://www.youtube.com/watch?v=7AMRfNKwuYo)
 - [Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)
@@ -75,6 +82,7 @@ Then you can test by typing `http://localhost:8080/camera` in your web browser.
 - [livego](https://github.com/qieangel2013/livego)
 - [goDash Application](https://github.com/uccmisl/godash)
 - [Angular video transformations](https://cloudinary.com/documentation/angular_video_transformations)
+- [Set up a LiveSwitch Angular Project](https://developer.liveswitch.io/liveswitch-server/get-started/js/set-up-a-liveswitch-angular-project.html)
 
 
 ### Further reading
