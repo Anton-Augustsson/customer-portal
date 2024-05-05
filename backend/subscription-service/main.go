@@ -7,7 +7,7 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/Anton-Augustsson/customer-portal/subscription-service/api/producer"
+	pb "github.com/Anton-Augustsson/customer-portal/subscription-service/api/subscription-service"
 	"google.golang.org/grpc"
 )
 
@@ -21,9 +21,9 @@ type server struct {
 }
 
 // SayHello implements helloworld.GreeterServer
-func (s *server) SubscriptionLiveStreamAccess(ctx context.Context, in *pb.SubscriptionLiveStreamAccessRequest) (*pb.SubscriptionLiveStreamAccessReply, error) {
+func (s *server) LiveStreamAccess(ctx context.Context, in *pb.LiveStreamAccessRequest) (*pb.LiveStreamAccessReply, error) {
 	log.Printf("Received: %v", in.GetSubscriberId())
-	return &pb.SubscriptionLiveStreamAccessReply{
+	return &pb.LiveStreamAccessReply{
 		SubscriberId: in.GetSubscriberId(),
 		RobotId:      in.GetRobotId(),
 		CameraId:     in.GetCameraId(),

@@ -1,0 +1,41 @@
+
+syntax = "proto3";
+option go_package = "github.com/Anton-Augustsson/customer-portal/robot-remote-controller-service/api/producer";
+
+enum SteerOperationType {
+  Left = 0;
+  Right = 1;
+}
+
+enum SpeedOperationType {
+  Up = 0;
+  Down = 1;
+  Stop = 2;
+}
+
+message SteerRequest {
+  int32 subscriber_id = 1;
+  int32 robot_id = 2;
+  SteerOperationType steer_opt = 3;
+}
+
+message SteerReply {
+  int32 subscriber_id = 1;
+  int32 robot_id = 2;
+}
+
+message SpeedRequest {
+  int32 subscriber_id = 1;
+  int32 robot_id = 2;
+  SpeedOperationType speed_opt = 3;
+}
+
+message SpeedReply {
+  int32 subscriber_id = 1;
+  int32 robot_id = 2;
+}
+
+service Greeter {
+  rpc Speed (SpeedRequest) returns (SpeedReply) {}
+  rpc Steer (SteerRequest) returns (SteerReply) {}
+}

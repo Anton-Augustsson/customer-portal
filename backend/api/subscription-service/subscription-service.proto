@@ -1,0 +1,35 @@
+
+syntax = "proto3";
+option go_package = "github.com/Anton-Augustsson/customer-portal/api/subscription-service";
+
+
+message LiveStreamAccessRequest {
+  int32 subscriber_id = 1;
+  int32 robot_id = 2;
+  int32 camera_id = 3;
+}
+
+message LiveStreamAccessReply {
+  int32 subscriber_id = 1;
+  int32 robot_id = 2;
+  int32 camera_id = 3;
+  bool is_allowed = 4;
+}
+
+message ControlAccessRequest {
+  int32 subscriber_id = 1;
+  int32 robot_id = 2;
+  int32 actuator_id = 3;
+}
+
+message ControlAccessReply {
+  int32 subscriber_id = 1;
+  int32 robot_id = 2;
+  int32 actuator_id = 3;
+  bool is_allowed = 4;
+}
+
+service Greeter {
+  rpc LiveStreamAccess (LiveStreamAccessRequest) returns (LiveStreamAccessReply) {}
+  rpc ControlAccess (ControlAccessRequest) returns (ControlAccessReply) {}
+}
