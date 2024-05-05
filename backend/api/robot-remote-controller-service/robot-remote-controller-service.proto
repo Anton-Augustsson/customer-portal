@@ -1,6 +1,6 @@
 
 syntax = "proto3";
-option go_package = "github.com/Anton-Augustsson/customer-portal/robot-remote-controller-service/api/producer";
+option go_package = "github.com/Anton-Augustsson/customer-portal/api/robot-remote-controller-service";
 
 enum SteerOperationType {
   Left = 0;
@@ -35,7 +35,7 @@ message SpeedReply {
   int32 robot_id = 2;
 }
 
-service Greeter {
+service RobotRemoteControllerService {
   rpc Speed (SpeedRequest) returns (SpeedReply) {}
   rpc Steer (SteerRequest) returns (SteerReply) {}
 }

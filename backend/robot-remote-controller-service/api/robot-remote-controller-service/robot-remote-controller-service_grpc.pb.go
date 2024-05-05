@@ -4,7 +4,7 @@
 // - protoc             v3.19.6
 // source: api/robot-remote-controller-service/robot-remote-controller-service.proto
 
-package producer
+package robot_remote_controller_service
 
 import (
 	context "context"
@@ -18,122 +18,123 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// GreeterClient is the client API for Greeter service.
+// RobotRemoteControllerServiceClient is the client API for RobotRemoteControllerService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type GreeterClient interface {
+type RobotRemoteControllerServiceClient interface {
 	Speed(ctx context.Context, in *SpeedRequest, opts ...grpc.CallOption) (*SpeedReply, error)
 	Steer(ctx context.Context, in *SteerRequest, opts ...grpc.CallOption) (*SteerReply, error)
 }
 
-type greeterClient struct {
+type robotRemoteControllerServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewGreeterClient(cc grpc.ClientConnInterface) GreeterClient {
-	return &greeterClient{cc}
+func NewRobotRemoteControllerServiceClient(cc grpc.ClientConnInterface) RobotRemoteControllerServiceClient {
+	return &robotRemoteControllerServiceClient{cc}
 }
 
-func (c *greeterClient) Speed(ctx context.Context, in *SpeedRequest, opts ...grpc.CallOption) (*SpeedReply, error) {
+func (c *robotRemoteControllerServiceClient) Speed(ctx context.Context, in *SpeedRequest, opts ...grpc.CallOption) (*SpeedReply, error) {
 	out := new(SpeedReply)
-	err := c.cc.Invoke(ctx, "/Greeter/Speed", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/RobotRemoteControllerService/Speed", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *greeterClient) Steer(ctx context.Context, in *SteerRequest, opts ...grpc.CallOption) (*SteerReply, error) {
+func (c *robotRemoteControllerServiceClient) Steer(ctx context.Context, in *SteerRequest, opts ...grpc.CallOption) (*SteerReply, error) {
 	out := new(SteerReply)
-	err := c.cc.Invoke(ctx, "/Greeter/Steer", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/RobotRemoteControllerService/Steer", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// GreeterServer is the server API for Greeter service.
-// All implementations must embed UnimplementedGreeterServer
+// RobotRemoteControllerServiceServer is the server API for RobotRemoteControllerService service.
+// All implementations must embed UnimplementedRobotRemoteControllerServiceServer
 // for forward compatibility
-type GreeterServer interface {
+type RobotRemoteControllerServiceServer interface {
 	Speed(context.Context, *SpeedRequest) (*SpeedReply, error)
 	Steer(context.Context, *SteerRequest) (*SteerReply, error)
-	mustEmbedUnimplementedGreeterServer()
+	mustEmbedUnimplementedRobotRemoteControllerServiceServer()
 }
 
-// UnimplementedGreeterServer must be embedded to have forward compatible implementations.
-type UnimplementedGreeterServer struct {
+// UnimplementedRobotRemoteControllerServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedRobotRemoteControllerServiceServer struct {
 }
 
-func (UnimplementedGreeterServer) Speed(context.Context, *SpeedRequest) (*SpeedReply, error) {
+func (UnimplementedRobotRemoteControllerServiceServer) Speed(context.Context, *SpeedRequest) (*SpeedReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Speed not implemented")
 }
-func (UnimplementedGreeterServer) Steer(context.Context, *SteerRequest) (*SteerReply, error) {
+func (UnimplementedRobotRemoteControllerServiceServer) Steer(context.Context, *SteerRequest) (*SteerReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Steer not implemented")
 }
-func (UnimplementedGreeterServer) mustEmbedUnimplementedGreeterServer() {}
+func (UnimplementedRobotRemoteControllerServiceServer) mustEmbedUnimplementedRobotRemoteControllerServiceServer() {
+}
 
-// UnsafeGreeterServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to GreeterServer will
+// UnsafeRobotRemoteControllerServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RobotRemoteControllerServiceServer will
 // result in compilation errors.
-type UnsafeGreeterServer interface {
-	mustEmbedUnimplementedGreeterServer()
+type UnsafeRobotRemoteControllerServiceServer interface {
+	mustEmbedUnimplementedRobotRemoteControllerServiceServer()
 }
 
-func RegisterGreeterServer(s grpc.ServiceRegistrar, srv GreeterServer) {
-	s.RegisterService(&Greeter_ServiceDesc, srv)
+func RegisterRobotRemoteControllerServiceServer(s grpc.ServiceRegistrar, srv RobotRemoteControllerServiceServer) {
+	s.RegisterService(&RobotRemoteControllerService_ServiceDesc, srv)
 }
 
-func _Greeter_Speed_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RobotRemoteControllerService_Speed_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SpeedRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GreeterServer).Speed(ctx, in)
+		return srv.(RobotRemoteControllerServiceServer).Speed(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/Greeter/Speed",
+		FullMethod: "/RobotRemoteControllerService/Speed",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreeterServer).Speed(ctx, req.(*SpeedRequest))
+		return srv.(RobotRemoteControllerServiceServer).Speed(ctx, req.(*SpeedRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Greeter_Steer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RobotRemoteControllerService_Steer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SteerRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GreeterServer).Steer(ctx, in)
+		return srv.(RobotRemoteControllerServiceServer).Steer(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/Greeter/Steer",
+		FullMethod: "/RobotRemoteControllerService/Steer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreeterServer).Steer(ctx, req.(*SteerRequest))
+		return srv.(RobotRemoteControllerServiceServer).Steer(ctx, req.(*SteerRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Greeter_ServiceDesc is the grpc.ServiceDesc for Greeter service.
+// RobotRemoteControllerService_ServiceDesc is the grpc.ServiceDesc for RobotRemoteControllerService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Greeter_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "Greeter",
-	HandlerType: (*GreeterServer)(nil),
+var RobotRemoteControllerService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "RobotRemoteControllerService",
+	HandlerType: (*RobotRemoteControllerServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Speed",
-			Handler:    _Greeter_Speed_Handler,
+			Handler:    _RobotRemoteControllerService_Speed_Handler,
 		},
 		{
 			MethodName: "Steer",
-			Handler:    _Greeter_Steer_Handler,
+			Handler:    _RobotRemoteControllerService_Steer_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

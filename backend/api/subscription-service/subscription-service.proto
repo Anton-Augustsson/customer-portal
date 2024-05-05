@@ -29,7 +29,7 @@ message ControlAccessReply {
   bool is_allowed = 4;
 }
 
-service Greeter {
+service SubscriptionService {
   rpc LiveStreamAccess (LiveStreamAccessRequest) returns (LiveStreamAccessReply) {}
   rpc ControlAccess (ControlAccessRequest) returns (ControlAccessReply) {}
 }
