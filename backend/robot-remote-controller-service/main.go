@@ -8,15 +8,15 @@ import (
 	"net"
 	"time"
 
-	pb "github.com/Anton-Augustsson/customer-portal/robot-remote-controller-service/api/robot-remote-controller-service"
-	pb_subscription "github.com/Anton-Augustsson/customer-portal/robot-remote-controller-service/api/subscription-service"
+	pb "github.com/Anton-Augustsson/customer-portal/robot-remote-controller-service/src/api/robot-remote-controller-service"
+	pb_subscription "github.com/Anton-Augustsson/customer-portal/robot-remote-controller-service/src/api/subscription-service"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
 
 var (
-	port                      = flag.Int("port", 50052, "The server port")
-	subscription_service_addr = flag.String("addr", "localhost:50051", "the address to connect to")
+	port                      = flag.Int("port", 50051, "The server port")
+	subscription_service_addr = flag.String("addr", "subscription-service.default.svc.cluster.local:8181", "the address to connect to")
 )
 
 type server struct {

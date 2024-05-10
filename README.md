@@ -1,6 +1,52 @@
 # Customer portal
 An example application of a scalable customer portal developed in Golang using gin for the backend and Angular for the frontend.
 
+## Quick start
+### Requirements
+- Docker 
+- Protobuf and gRPC
+- Kind
+- Kubectl
+
+
+### Generate Client and server stub
+```bash
+cd backend
+./update-grpc.sh
+```
+
+### Build images
+All microservices needs currently needs to be build manually.
+An example is shown how it works for subscription-service.
+```bash
+cd backend/subscription-service
+docker build . --tag subscription-service
+kind load docker-image subscription-service:latest
+```
+
+### Deploy
+```bash
+cd kubernetes
+kubectl apply -f subscription-deployment.yaml
+kubectl apply -f subscription-service.yaml
+kubectl apply -f robot-remote-controller-deployment.yaml
+kubectl apply -f robot-remote-controller-service.yaml
+```
+
+Currently, when deploying with kind the port is not exposed to the 
+host, so you need to run an exposure command manually.
+You need to first find the name of the pod you want to expose.
+```bash
+kubectl get pods
+```
+Then you can use the pod to expose the port.
+```bash
+kubectl port-forward robot-remote-controller-deployment-7b775fd47c-n9x59 8182:50051
+```
+Note: exchange `robot-remote-controller-deployment-7b775fd47c-n9x59` with 
+your pod.
+
+
 
 ## The example
 The functionality that the system provides is viewing a camera on a remote device, e.g. a 
@@ -14,23 +60,6 @@ the customer portal.
 - Subscriber 
 - Subscription
 - Camera
-
-
-## Generate server stub
-```bash
-docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
-    -i /local/open-api-customer-portal.yaml \
-    -g go-gin-server \
-    -o /local/out/gin
-```
-read more [go-gin-server.md](https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/go-gin-server.md)
-
-## Build
-The build and start up is handled with docker compose, so in the root project directory type:
-```bash
-docker compose up
-```
-Then you can test by typing `http://localhost:8080/camera` in your web browser.
 
 
 ## Resources

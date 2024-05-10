@@ -7,7 +7,7 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/Anton-Augustsson/customer-portal/subscription-service/api/subscription-service"
+	pb "github.com/Anton-Augustsson/customer-portal/subscription-service/src/api/subscription-service"
 	"google.golang.org/grpc"
 )
 

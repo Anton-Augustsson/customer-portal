@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: robot-remote-controller-deployment
 spec:
   replicas: 1 # Adjust replica count as needed
   selector:
     matchLabels:
-      app: backend
+      app: robot-remote-controller
   template:
     metadata:
       labels:
-        app: backend
+        app: robot-remote-controller
     spec:
       containers:
-      - name: backend
-        image: backend:latest
+      - name: robot-remote-controller
+        image: robot-remote-controller-service:latest
         imagePullPolicy: Never
         ports:
-        - containerPort: 8080
+        - containerPort: 50051

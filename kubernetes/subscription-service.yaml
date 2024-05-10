@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: subscription-service
+spec:
+  selector:
+    app: subscription
+  ports:
+  - protocol: TCP
+    port: 8181
+    targetPort: 50051
