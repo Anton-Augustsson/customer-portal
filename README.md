@@ -7,6 +7,7 @@ An example application of a scalable customer portal developed in Golang using g
 - Protobuf and gRPC
 - Kind
 - Kubectl
+- Helm
 
 
 ### Generate Client and server stub
@@ -26,11 +27,7 @@ kind load docker-image subscription-service:latest
 
 ### Deploy
 ```bash
-cd kubernetes
-kubectl apply -f subscription-deployment.yaml
-kubectl apply -f subscription-service.yaml
-kubectl apply -f robot-remote-controller-deployment.yaml
-kubectl apply -f robot-remote-controller-service.yaml
+helm install customer-portal-test customer-portal
 ```
 
 Currently, when deploying with kind the port is not exposed to the 
@@ -63,24 +60,17 @@ the customer portal.
 
 
 ## Resources
-### VS Code
-- Swagger Viewer: Allows you to view the OpenAPI specification in a more intuitive way. It also provides linting.
 
 
-### OpenAPI
-- [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
-- [Documentation for the spring Generator](https://openapi-generator.tech/docs/generators/spring/)
-- [Open API Server Implementation Using OpenAPI Generator](https://www.baeldung.com/java-openapi-generator-server)
-- [Spring Documentation Overview](https://docs.spring.io/spring-boot/docs/current/reference/html/documentation.html#documentation)
-- [OpenAPI data types](https://swagger.io/docs/specification/data-models/data-types/)
-- [OpenAPI Guide](https://swagger.io/docs/specification/about/)
-- [OpenAPI 3.0 Tutorial](https://support.smartbear.com/swaggerhub/docs/en/get-started/openapi-3-0-tutorial.html)
-- [OpenAPI Specification v3.1.0](https://spec.openapis.org/oas/v3.1.0)
+#### gRPC
+- [Introduction to gRPC](https://grpc.io/docs/what-is-grpc/introduction/)
+- [Quick start](https://grpc.io/docs/languages/go/quickstart/)
 
 
 ### API design
 - [Better API Design with OpenAPI (Cloud Next '18)](https://www.youtube.com/watch?v=uBs6dfUgxcI)
 - [RESTful web API design](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design)
+- [Google Cloud API design](https://cloud.google.com/apis/design)
 
 
 ### GO
@@ -115,8 +105,18 @@ the customer portal.
 
 
 ### Further reading
-#### gRPC
-AN alternatively to a REST API is gRPC which is said to provide better performance then REST API. It is much more modern then REST API and was initial created by google in 2015 but is now managed by Cloud Native Computing Foundation.
+
+### OpenAPI
+- [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
+- [Documentation for the spring Generator](https://openapi-generator.tech/docs/generators/spring/)
+- [Open API Server Implementation Using OpenAPI Generator](https://www.baeldung.com/java-openapi-generator-server)
+- [Spring Documentation Overview](https://docs.spring.io/spring-boot/docs/current/reference/html/documentation.html#documentation)
+- [OpenAPI data types](https://swagger.io/docs/specification/data-models/data-types/)
+- [OpenAPI Guide](https://swagger.io/docs/specification/about/)
+- [OpenAPI 3.0 Tutorial](https://support.smartbear.com/swaggerhub/docs/en/get-started/openapi-3-0-tutorial.html)
+- [OpenAPI Specification v3.1.0](https://spec.openapis.org/oas/v3.1.0)
+- Swagger Viewer for VSCode: Allows you to view the OpenAPI specification in a more intuitive way. It also provides linting.
+
 
 ### Spring boot
 An alternative to Golang for microservices is JAVA using the spring boot framework.
