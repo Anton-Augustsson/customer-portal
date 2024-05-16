@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: customer-portal-service
+  name: web-service
 spec:
   selector:
-    app: customer-portal
+    app: web
   ports:
   - protocol: TCP
     port: 8000

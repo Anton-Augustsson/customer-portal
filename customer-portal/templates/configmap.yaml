@@ -1,21 +1,23 @@
-worker_processes 1;
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  nginx.conf: |
+    worker_processes 1;
 
+    events {
+      worker_connections 1024;
+    }
 
-events {
-    worker_connections 1024;
-}
-
-
-http {
-    server {
+    http {
+      server {
         listen 80;
         server_name localhost;
-
 
         root /usr/share/nginx/html;
         index index.html index.htm;
         include /etc/nginx/mime.types;
-
 
         gzip on;
         gzip_http_version 1.1;
@@ -26,19 +28,16 @@ http {
         gzip_types        text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript;
         gzip_comp_level   9;
 
-
         # location ~* \.(eot|ttf|woff|woff2|js|json)$ {
         #     add_header Access-Control-Allow-Origin *;
         # }
-
 
         # location ~ \.js {
         #     add_header Content-Type application/x-javascript;
         # }
 
-
         location / {
             try_files $uri $uri/ /index.html;
         }
+      }
     }
-}
