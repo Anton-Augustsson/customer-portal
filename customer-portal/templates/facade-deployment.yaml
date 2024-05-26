@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: facade-deployment
+spec:
+  replicas: 1 # Adjust replica count as needed
+  selector:
+    matchLabels:
+      app: facade
+  template:
+    metadata:
+      labels:
+        app: facade
+    spec:
+      containers:
+      - name: facade
+        image: facade-service:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080

@@ -12,8 +12,9 @@ An example application of a scalable customer portal developed in Golang using g
 
 ### Generate Client and server stub
 ```bash
+git clone git@github.com:googleapis/googleapis.git ../googleapis
 cd backend
-./update-grpc.sh
+./update-grpc.sh ../../googleapis
 ```
 
 ### Build images
@@ -61,8 +62,13 @@ the customer portal.
 
 ## Resources
 
+### Security
 
-#### gRPC
+#### Between Microservices
+- [Isto get started](https://istio.io/latest/docs/setup/getting-started/)
+- [Isto](https://istio.io/latest/docs/examples/microservices-istio/istio-ingress-gateway/)
+
+### gRPC
 - [Introduction to gRPC](https://grpc.io/docs/what-is-grpc/introduction/)
 - [Quick start](https://grpc.io/docs/languages/go/quickstart/)
 

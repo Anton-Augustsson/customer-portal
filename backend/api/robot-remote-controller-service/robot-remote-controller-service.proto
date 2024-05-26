@@ -1,5 +1,6 @@
 
 syntax = "proto3";
+
 option go_package = "github.com/Anton-Augustsson/customer-portal/api/robot-remote-controller-service";
 
 enum SteerOperationType {

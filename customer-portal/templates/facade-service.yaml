@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: facade-service
+spec:
+  selector:
+    app: facade
+  ports:
+  - protocol: TCP
+    port: 8180
+    targetPort: 8080

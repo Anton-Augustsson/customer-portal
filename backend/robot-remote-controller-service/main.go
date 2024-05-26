@@ -12,6 +12,7 @@ import (
 	pb_subscription "github.com/Anton-Augustsson/customer-portal/robot-remote-controller-service/src/api/subscription-service"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	"google.golang.org/protobuf/types/known/emptypb"
 )
 
 var (
@@ -49,6 +50,14 @@ func (s *server) Speed(ctx context.Context, in *pb.SpeedRequest) (*pb.SpeedReply
 	return &pb.SpeedReply{
 		SubscriberId: in.GetSubscriberId(),
 		RobotId:      in.GetRobotId(),
+	}, nil
+}
+
+func (s *server) Test(ctx context.Context, in *emptypb.Empty) (*pb.SteerReply, error) {
+	log.Print("why")
+	return &pb.SteerReply{
+		SubscriberId: 1,
+		RobotId:      1,
 	}, nil
 }
 
