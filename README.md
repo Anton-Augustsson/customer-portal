@@ -27,6 +27,18 @@ kind load docker-image subscription-service:latest
 ```
 
 ### Deploy
+Setup kind
+```bash
+kind create cluster --config kind-config.yaml
+```
+
+```bash
+kind load docker-image facade-service:latest
+kind load docker-image robot-remote-controller-service:latest
+kind load docker-image subscription-service:latest
+kind load docker-image web:latest
+```
+
 ```bash
 helm install customer-portal-test customer-portal
 ```
@@ -37,12 +49,24 @@ You need to first find the name of the pod you want to expose.
 ```bash
 kubectl get pods
 ```
-Then you can use the pod to expose the port.
+Then you can use the pod to expose the port. Note that this is not required 
+if you have created the kind cluster with the `kind-config.yaml` file.
 ```bash
 kubectl port-forward robot-remote-controller-deployment-7b775fd47c-n9x59 8182:50051
 ```
 Note: exchange `robot-remote-controller-deployment-7b775fd47c-n9x59` with 
 your pod.
+
+
+### Remove
+```bash
+helm uninstall customer-portal-test
+```
+
+CAUTION: only run this command if you are not have any other cluster.
+```bash
+kind delete cluster
+```
 
 
 
@@ -68,6 +92,12 @@ the customer portal.
 - [Isto get started](https://istio.io/latest/docs/setup/getting-started/)
 - [Isto](https://istio.io/latest/docs/examples/microservices-istio/istio-ingress-gateway/)
 
+#### Client-server
+- [keycloak getting started](https://www.keycloak.org/getting-started/getting-started-kube)
+- [keycloak](https://www.keycloak.org/)
+- [keycloak angular](https://pretius.com/blog/keycloak-angular-integration/)
+
+
 ### gRPC
 - [Introduction to gRPC](https://grpc.io/docs/what-is-grpc/introduction/)
 - [Quick start](https://grpc.io/docs/languages/go/quickstart/)
@@ -92,7 +122,8 @@ the customer portal.
 ### Angular
 - [Angular Basics: How To Use HttpClient in Angular](https://www.telerik.com/blogs/angular-basics-how-to-use-httpclient) 
 - [ng-openapi-gen: An OpenAPI 3 code generator for Angular](https://www.npmjs.com/package/ng-openapi-gen)
-- [HTTP: Setup for server communication](https://angular.io/guide/http-setup-server-communication)
+- [HttpClient Angular](https://angular.io/guide/http-send-data-to-server)
+- [HttpClient Angular](https://angular.io/guide/http-send-data-to-server)
 
 
 ### Live streaming service
